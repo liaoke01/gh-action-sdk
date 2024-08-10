@@ -190,6 +190,7 @@ if [ "$INDEX" = '1' ];then
         ls
 	cd bin/packages/aarch64_generic/1
         $b . > Packages
+	ls
 	endgroup
 fi
 
