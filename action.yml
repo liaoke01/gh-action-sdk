@@ -21,7 +21,7 @@ runs:
           --env BUILD_LOG \
           --env EXTRA_FEEDS \
           --env FEEDNAME \
-          --user root
+          --user root \
           --env IGNORE_ERRORS \
           --env KEY_BUILD \
           --env NO_DEFAULT_FEEDS \
