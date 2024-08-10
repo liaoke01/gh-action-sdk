@@ -185,7 +185,7 @@ if [ "$INDEX" = '1' ];then
         cd ..
 	echo 222
         ls
-	cd bin/packages/${ matrix.arch }/1
+	cd bin/packages/aarch64_generic/1
         $b . > Packages
 	endgroup
 fi
