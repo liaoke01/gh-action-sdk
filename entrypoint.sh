@@ -179,6 +179,7 @@ if [ "$INDEX" = '1' ];then
 	rm scripts/ipkg-make-index.sh
         cd scripts
 	wget https://raw.githubusercontent.com/liaoke01/openwrt-package/main/.github/workflows/ipkg-make-index.sh
+        chmod 777 ipkg-make-index.sh
         echo 111
 	ls
         cat ipkg-make-index.sh
