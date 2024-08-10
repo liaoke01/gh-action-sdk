@@ -176,7 +176,13 @@ fi
 
 if [ "$INDEX" = '1' ];then
 	group "make package/index"
-	make package/index
+	rm scripts/ipkg-make-index.sh
+        cd scripts
+	wget https://raw.githubusercontent.com/liaoke01/package-feeds/main/.github/workflows/ipkg-make-index.sh
+        export b=$(readlink -f ipkg-make-index.sh)
+        cd ..
+	cd bin/packages/${{ matrix.arch }}/1
+        $b . > Packages
 	endgroup
 fi
 
