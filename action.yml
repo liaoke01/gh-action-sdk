@@ -17,11 +17,10 @@ runs:
         echo "::endgroup::"
       shell: bash
     - run: |
-       docker run --rm \
+        docker run --rm \
           --env BUILD_LOG \
           --env EXTRA_FEEDS \
           --env FEEDNAME \
-          --user root \
           --env IGNORE_ERRORS \
           --env KEY_BUILD \
           --env NO_DEFAULT_FEEDS \
@@ -33,7 +32,6 @@ runs:
           -v ${{ steps.inputs.outputs.artifacts_dir }}:/artifacts \
           -v ${{ steps.inputs.outputs.feed_dir }}:/feed \
           sdk
-
       shell: bash
     - run: sudo chown -R --reference=${{ steps.inputs.outputs.artifacts_dir }}/.. ${{ steps.inputs.outputs.artifacts_dir }}
       shell: bash
