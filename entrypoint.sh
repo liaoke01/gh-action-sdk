@@ -176,12 +176,14 @@ fi
 
 if [ "$INDEX" = '1' ];then
 	group "make package/index"
-        echo 111
-        ls
 	rm scripts/ipkg-make-index.sh
         cd scripts
 	wget https://raw.githubusercontent.com/liaoke01/openwrt-package/main/.github/workflows/ipkg-make-index.sh
+        echo 111
+	ls
+        cat ipkg-make-index.sh
         export b=$(readlink -f ipkg-make-index.sh)
+	echo $b
         cd ..
 	echo 222
         ls
