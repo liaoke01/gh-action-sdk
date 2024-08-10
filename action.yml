@@ -17,31 +17,21 @@ runs:
         echo "::endgroup::"
       shell: bash
     - run: |
-        docker run --rm \
-  --env BUILD_LOG \
-  --env EXTRA_FEEDS \
-  --env FEEDNAME \
-  --env IGNORE_ERRORS \
-  --env KEY_BUILD \
-  --env NO_DEFAULT_FEEDS \
-  --env NO_REFRESH_CHECK \
-  --env NO_SHFMT_CHECK \
-  --env PACKAGES \
-  --env INDEX \
-  --env V \
-  -v ${{ steps.inputs.outputs.artifacts_dir }}:/artifacts \
-  -v ${{ steps.inputs.outputs.feed_dir }}:/feed \
-  sdk /bin/sh -c "\
-    if command -v opkg > /dev/null; then \
-        opkg update && opkg install coreutils; \
-    elif command -v apt-get > /dev/null; then \
-        apt-get update && apt-get install -y coreutils; \
-    elif command -v apk > /dev/null; then \
-        apk add --no-cache coreutils; \
-    else \
-        echo 'No suitable package manager found. Skipping package installation.'; \
-    fi \
-    && exec /entrypoint.sh"
+       docker run --rm \
+          --env BUILD_LOG \
+          --env EXTRA_FEEDS \
+          --env FEEDNAME \
+          --env IGNORE_ERRORS \
+          --env KEY_BUILD \
+          --env NO_DEFAULT_FEEDS \
+          --env NO_REFRESH_CHECK \
+          --env NO_SHFMT_CHECK \
+          --env PACKAGES \
+          --env INDEX \
+          --env V \
+          -v ${{ steps.inputs.outputs.artifacts_dir }}:/artifacts \
+          -v ${{ steps.inputs.outputs.feed_dir }}:/feed \
+          sdk
 
       shell: bash
     - run: sudo chown -R --reference=${{ steps.inputs.outputs.artifacts_dir }}/.. ${{ steps.inputs.outputs.artifacts_dir }}
